@@ -2,6 +2,77 @@ const UserFile = require('../models/internalUser.js');
 const cloudinary = require('../middlewares/cloudinary.js');
 const upload = require('../middlewares/multer.js');
 const internaluserfiles = require("../models/externalUser.js")
+// const bcrypt = require("bcrypt");
+// const jwt = require("jsonwebtoken");
+
+
+// const userRegistration = async (req, res)=>{
+//   const {name, email, password, Role} = req.body;
+//   const user = await UserFile.findOne({email:email});
+//   if(user){
+//       res.send({"status": "failed", "messege": "Email allready exists"})
+//   }else{
+//       if(name && email && password && Role){
+//               try {
+//                   const salt = await bcrypt.genSalt(10)
+//                   const hashPassword = await bcrypt.hash(password, salt);
+//                   const doc = new UserFile({
+//                   name: name,
+//                   email: email,
+//                   password: hashPassword,
+//                   Role: Role
+//               })
+//               await doc.save()
+
+//               // for token
+//               const saved_user = await UserFile.findOne({email: email})
+
+//               // Generate JWT Token
+//               const token = jwt.sign({userID: saved_user._id}, process.env.JWT_SECRET_KEY, {expiresIn: "6d"});
+
+//               res.status(201).send({"status": "success", "messege": "Registration Success", "token": token})
+//               } catch (error) {
+//                   console.log(error)
+//                   res.send({"status": "failed", "messege": "Unable to Register"})
+                  
+//               }
+
+//       }else{
+//           res.send({"status": "failed", "messege": "All fields are required"})
+//       }
+//   }
+// }
+
+// // Function for login
+// const userLogin = async (req, res) =>{
+//   try {
+//       const {name, email, password} = req.body;
+//       if(name && email && password){
+//           const user = await UserFile.findOne({email: email});
+//           if(user != null){
+//               const isMatch = await bcrypt.compare(password, user.password);
+//               if((user.name === name && user.email === email) && isMatch){
+
+//                   // for token
+//                   // Generate JWT Token
+//                   const token = jwt.sign({userID: user._id}, process.env.JWT_SECRET_KEY, {expiresIn: "6d"});
+
+//                   res.send({"status": "success", "messege": "Longin Success", "token": token})
+//               }else{
+//                   res.send({"status": "failed", "messege": "Email or Password is not Valid"})
+//               }
+//           }else{
+//               res.send({"status": "failed", "messege": "You are not a Registered User"})
+//           }
+//           }else{
+//               res.send({"status": "failed", "messege": "All fields are required"})
+//       }
+//   } catch (error) {
+//       console.log(error);
+//       res.send({"status": "failed", "messege": "Unable to Login"})
+//   }
+// }
+
 
   const uploadFileToCloudinary = async (req, res) => {
     try {
