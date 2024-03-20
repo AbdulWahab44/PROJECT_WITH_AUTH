@@ -1,15 +1,14 @@
-
 const mongoose = require('mongoose');
 
 const userFileSchema = new mongoose.Schema({
-    imageUrl: {
-        type: String,
-    },
-    publicId: String,
-    name: {
-      type: String
-    },
-    fileName: String 
+  name: { type: String},
+  email: { type: String},
+  password: { type: String},
+  Role: { type: String},
+
+  imageUrl: String,
+  publicId: String,
+  fileName: String
 });
 
 const UserFile = mongoose.model('externalUserFile', userFileSchema);
